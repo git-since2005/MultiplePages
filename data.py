@@ -19,7 +19,7 @@ def app(df):
             st.write(df[column_data])
     with beta_col3:
         if st.checkbox("View column data types"):
-            col_names = st.selectbox('Select column', df.columns)
+            col_names = st.selectbox('Select column', tuple(df.columns))
             st.write(f"Name: {col_names} \nData type: {df[col_names].dtype}")
     if st.checkbox("Show Summary"):
         st.table(df.describe())
