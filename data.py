@@ -6,7 +6,7 @@ import streamlit as st
 # Define a function for info for the dataset
 def app(df):
     st.header("View data")
-    with st.expander("View data"):
+    with st.beta_expander("View data"):
         st.table(df)
     st.subheader("Columns Description:")
     beta_col1, beta_col2, beta_col3 = st.columns(3)
