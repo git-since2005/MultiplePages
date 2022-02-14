@@ -8,6 +8,8 @@ import streamlit as st
 # Import mutliple pages
 import home
 import data
+import plots
+import predict
 
 st.set_page_config(page_title = 'Car Price Prediction',
 					page_icon = ':car:',
@@ -55,11 +57,14 @@ census_df = load_data()
 # Start designing the app
 # Add navigation bar
 st.sidebar.title("Navigate")
-user_choice = st.sidebar.radio("Go to", ('Home', 'Data', 'Plots', 'Predict', 'Dashboard'))
+pages_dict = {'Home': home,
+			'Data': data,
+			'Plots': plots,
+			'Predict': predict}
+user_choice = st.sidebar.radio("Go to", ('Home', 'Data', 'Plots', 'Predict'))
 if user_choice == 'Home':
 	home.app()
 elif user_choice == 'Data':
 	data.app(census_df)
 else:
 	selected_page = pages_dict[user_choice]
-	selected_page.app(final_cars_df)
