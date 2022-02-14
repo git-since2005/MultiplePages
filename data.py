@@ -9,7 +9,7 @@ def app(df):
     with st.beta_expander("View data"):
         st.table(df)
     st.subheader("Columns Description:")
-    beta_col1, beta_col2, beta_col3 = st.columns(3)
+    beta_col1, beta_col2, beta_col3 = st.beta_columns(3)
     with beta_col1:
         if st.checkbox("Show all column names"):
             st.table(list(df.columns))
