@@ -11,7 +11,7 @@ import data
 import plots
 import predict
 
-st.set_page_config(page_title = 'Car Price Prediction',
+st.set_page_config(page_title = 'Prediction',
 					page_icon = ':car:',
 					layout = 'centered',
 					initial_sidebar_state = 'auto')
@@ -58,13 +58,12 @@ census_df = load_data()
 # Add navigation bar
 st.sidebar.title("Navigate")
 pages_dict = {'Home': home,
-			'Data': data,
-			'Plots': plots,
+			'View Data': data,
+			'Visualise Data': plots,
 			'Predict': predict}
-user_choice = st.sidebar.radio("Go to", ('Home', 'Data', 'Plots', 'Predict'))
+user_choice = st.sidebar.radio("Go to", ('Home', 'View Data', 'Visualise Data', 'Predict'))
 if user_choice == 'Home':
-	home.app()
-elif user_choice == 'Data':
-	data.app(census_df)
-else:
+	home.app(census_df)
+elif user_choice != 'Home':
 	selected_page = pages_dict[user_choice]
+	selected_page.app(census_df)
